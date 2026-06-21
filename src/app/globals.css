@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+:root {
+  --background: #F8F9FA;
+  --foreground: #333333;
+  --primary: #0A3D62;
+  --secondary: #F4C430;
+  --accent: #3C91E6;
+  --white: #FFFFFF;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --font-heading: var(--font-inter);
+  --font-body: var(--font-open-sans);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-open-sans), sans-serif;
+  scroll-behavior: smooth;
+}
+
+.ambassador-float {
+  animation: ambassador-float 6s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes ambassador-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ambassador-float {
+    animation: none;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-inter), sans-serif;
+  font-weight: 700;
+}
+
+/* Hide Unwanted UI Elements */
+/* Target common dev indicators and any forced floating elements */
+[class*="next-dev-overlay"],
+#__next-build-watcher,
+[data-nextjs-toast-wrapper],
+.next-dev-overlay-container {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* Hide floating icon at bottom-left if it matches specific description */
+div[class*="fixed"][class*="bottom-"][class*="left-"],
+.bottom-left,
+[class*="bottom-left"] {
+  display: none !important;
+}
